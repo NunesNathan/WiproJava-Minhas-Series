@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Serie {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
   private String nome;
   @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL)
