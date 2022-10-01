@@ -56,4 +56,15 @@ public class MinhasSeriesService {
 
     return serieRepository.save(serie);
   }
+
+  /** list eps method.*/
+  public List<Episodio> listarEpisodiosDaSerie(Integer id) {
+    Serie serie = serieRepository.findById(id).orElse(null);
+
+    if (serie == null) {
+      throw new SerieNaoEncontradaException();
+    }
+
+    return serie.getEpisodios();
+  }
 }

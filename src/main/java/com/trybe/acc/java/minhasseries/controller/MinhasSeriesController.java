@@ -38,4 +38,9 @@ public class MinhasSeriesController {
   public Serie addEpisodio(@PathVariable Integer id, @RequestBody Episodio episodio) {
     return minhasSeriesService.adicionarEpisodio(id, episodio);
   }
+
+  @GetMapping("/{id}/episodios")
+  public List<Episodio> listarEpisodiosDaSerie(@PathVariable("id") Integer id) {
+    return minhasSeriesService.listarEpisodiosDaSerie(id);
+  }
 }
