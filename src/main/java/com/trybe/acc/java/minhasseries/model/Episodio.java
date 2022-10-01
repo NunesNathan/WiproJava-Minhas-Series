@@ -24,6 +24,13 @@ public class Episodio {
     this.duracaoEmMinutos = duracaoEmMinutos;
   }
 
+  /** Full episode contructor, unused id.*/
+  public Episodio(Integer id, int numero, int duracaoEmMinutos, Serie serie) {
+    this.numero = numero;
+    this.duracaoEmMinutos = duracaoEmMinutos;
+    this.serie = serie;
+  }
+
   public Integer getId() {
     return id;
   }
