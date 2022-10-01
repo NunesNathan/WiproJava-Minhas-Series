@@ -1,5 +1,6 @@
 package com.trybe.acc.java.minhasseries.controller;
 
+import com.trybe.acc.java.minhasseries.model.Episodio;
 import com.trybe.acc.java.minhasseries.model.Serie;
 import com.trybe.acc.java.minhasseries.service.MinhasSeriesService;
 import java.util.List;
@@ -31,5 +32,10 @@ public class MinhasSeriesController {
   @DeleteMapping("/{id}")
   public void apagarSeriePorId(@PathVariable("id") Integer id) {
     minhasSeriesService.apagarSeriePorId(id);
+  }
+
+  @PostMapping("/{id}/episodios")
+  public Serie addEpisodio(@PathVariable Integer id, @RequestBody Episodio episodio) {
+    return minhasSeriesService.adicionarEpisodio(id, episodio);
   }
 }
