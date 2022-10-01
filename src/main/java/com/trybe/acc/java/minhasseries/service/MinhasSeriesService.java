@@ -1,6 +1,7 @@
 package com.trybe.acc.java.minhasseries.service;
 
 import com.trybe.acc.java.minhasseries.exception.SerieExistenteException;
+import com.trybe.acc.java.minhasseries.exception.SerieNaoEncontradaException;
 import com.trybe.acc.java.minhasseries.model.Serie;
 import com.trybe.acc.java.minhasseries.repository.SerieRepository;
 import java.util.List;
@@ -23,5 +24,15 @@ public class MinhasSeriesService {
     }
 
     return serieRepository.save(serie);
+  }
+
+  /** delete serie method.*/
+  public void apagarSeriePorId(Integer id) {
+    if (serieRepository.existsById(id)) {
+      serieRepository.deleteById(id);
+      return;
+    }
+
+    throw new SerieNaoEncontradaException();
   }
 }
