@@ -7,6 +7,7 @@ import com.trybe.acc.java.minhasseries.model.Episodio;
 import com.trybe.acc.java.minhasseries.model.Serie;
 import com.trybe.acc.java.minhasseries.repository.SerieRepository;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,5 +67,16 @@ public class MinhasSeriesService {
     }
 
     return serie.getEpisodios();
+  }
+
+  /** eps total time (minutes) method.*/
+  public Map<String, Integer> tempoGasto() {
+    List<Serie> series = serieRepository.findAll();
+
+    return Map.of("tempoEmMinutos", series
+            .stream()
+            .flatMap(serie -> serie.getEpisodios().stream())
+            .mapToInt(Episodio::getDuracaoEmMinutos)
+            .sum());
   }
 }
